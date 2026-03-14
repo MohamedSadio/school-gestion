@@ -59,7 +59,11 @@ export default function StudentsPage() {
     const newStudent: Student = {
       id: String(students.length + 1),
       matricule: `MAT-2024-${String(students.length + 1).padStart(3, '0')}`,
-      ...data,
+      nom: data.nom,
+      prenom: data.prenom,
+      dateNaissance: data.dateNaissance,
+      classe: data.classe,
+      anneeScolaire: data.anneeScolaire,
       statut: 'actif',
     };
     setStudents([newStudent, ...students]);
