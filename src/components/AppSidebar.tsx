@@ -28,7 +28,6 @@ const navItems: NavItem[] = [
   { title: 'Documents', url: '/documents', icon: FileText, roles: ['ADMIN', 'DIRECTEUR', 'COMPTABLE'] },
   { title: 'Finances', url: '/finance', icon: Wallet, roles: ['ADMIN', 'COMPTABLE'] },
   { title: 'Paie', url: '/payroll', icon: Banknote, roles: ['ADMIN', 'COMPTABLE'] },
-  { title: 'Utilisateurs', url: '/admin/users', icon: Users, roles: ['ADMIN'] },
   { title: 'Administration', url: '/admin', icon: Shield, roles: ['ADMIN'] },
 ];
 
