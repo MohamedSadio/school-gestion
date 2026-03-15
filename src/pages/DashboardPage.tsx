@@ -20,6 +20,7 @@ export default function DashboardPage() {
     <div className="animate-fade-in">
       <PageHeader
         title={`Bienvenue, ${user?.name?.split(' ')[0] || 'Utilisateur'}`}
+        titleClassName="font-mono"
         description={`Vue d'ensemble de votre établissement — ${new Date().toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}`}
       />
 
