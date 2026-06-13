@@ -80,10 +80,15 @@ export default function CalendarPage() {
   }).sort((a, b) => a.date.localeCompare(b.date));
 
   const onSubmit = (data: EventForm) => {
-    setEvents([
-      ...events,
-      { id: String(Date.now()), ...data },
-    ]);
+    const newEvent: SchoolEvent = {
+      id: String(Date.now()),
+      date: data.date,
+      title: data.title,
+      type: data.type,
+      semester: data.semester,
+      description: data.description,
+    };
+    setEvents([...events, newEvent]);
     setShowForm(false);
     reset();
   };
