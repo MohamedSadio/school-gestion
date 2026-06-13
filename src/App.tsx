@@ -6,6 +6,15 @@ import AppLayout from "@/components/AppLayout";
 import LoginPage from "@/pages/LoginPage";
 import DashboardPage from "@/pages/DashboardPage";
 import StudentsPage from "@/pages/StudentsPage";
+import StudentDetailPage from "@/pages/StudentDetailPage";
+import ClassesPage from "@/pages/ClassesPage";
+import ClassDetailPage from "@/pages/ClassDetailPage";
+import CalendarPage from "@/pages/CalendarPage";
+import TransportPage from "@/pages/TransportPage";
+import CanteenPage from "@/pages/CanteenPage";
+import UniformsPage from "@/pages/UniformsPage";
+import SettingsPage from "@/pages/SettingsPage";
+import SubscriptionPage from "@/pages/SubscriptionPage";
 import GradesPage from "@/pages/GradesPage";
 import DocumentsPage from "@/pages/DocumentsPage";
 import FinancePage from "@/pages/FinancePage";
@@ -29,13 +38,21 @@ const App = () => (
             <Route element={<AppLayout />}>
               <Route path="/" element={<DashboardPage />} />
               <Route path="/documents" element={<DocumentsPage />} />
+              <Route path="/calendar" element={<CalendarPage />} />
+              <Route path="/subscription" element={<SubscriptionPage />} />
             </Route>
           </Route>
 
           <Route element={<ProtectedRoute roles={['ADMIN', 'DIRECTEUR']} />}>
             <Route element={<AppLayout />}>
               <Route path="/students" element={<StudentsPage />} />
+              <Route path="/students/:id" element={<StudentDetailPage />} />
+              <Route path="/classes" element={<ClassesPage />} />
+              <Route path="/classes/:id" element={<ClassDetailPage />} />
               <Route path="/grades" element={<GradesPage />} />
+              <Route path="/transport" element={<TransportPage />} />
+              <Route path="/canteen" element={<CanteenPage />} />
+              <Route path="/uniforms" element={<UniformsPage />} />
             </Route>
           </Route>
 
@@ -49,6 +66,7 @@ const App = () => (
           <Route element={<ProtectedRoute roles={['ADMIN']} />}>
             <Route element={<AppLayout />}>
               <Route path="/admin" element={<AdminPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
             </Route>
           </Route>
 

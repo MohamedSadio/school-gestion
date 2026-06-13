@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Plus, X, Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Student {
   id: string;
@@ -77,7 +78,9 @@ export default function StudentsPage() {
       key: 'nom',
       header: 'Nom complet',
       render: (s: Student) => (
-        <span className="font-medium">{s.nom} {s.prenom}</span>
+        <Link to={`/students/${s.id}`} className="font-medium hover:text-accent">
+          {s.nom} {s.prenom}
+        </Link>
       ),
     },
     { key: 'classe', header: 'Classe' },

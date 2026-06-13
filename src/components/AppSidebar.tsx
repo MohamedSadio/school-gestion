@@ -8,6 +8,13 @@ import {
   Shield,
   LogOut,
   ChevronLeft,
+  Calendar,
+  School,
+  Bus,
+  UtensilsCrossed,
+  Shirt,
+  Settings,
+  CreditCard,
 } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuthStore, UserRole } from '@/stores/authStore';
@@ -23,12 +30,19 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { title: 'Tableau de bord', url: '/', icon: LayoutDashboard },
+  { title: 'Calendrier', url: '/calendar', icon: Calendar },
   { title: 'Élèves', url: '/students', icon: GraduationCap, roles: ['ADMIN', 'DIRECTEUR'] },
+  { title: 'Classes', url: '/classes', icon: School, roles: ['ADMIN', 'DIRECTEUR'] },
   { title: 'Notes & Bulletins', url: '/grades', icon: FileText, roles: ['ADMIN', 'DIRECTEUR'] },
+  { title: 'Transport', url: '/transport', icon: Bus, roles: ['ADMIN', 'DIRECTEUR'] },
+  { title: 'Cantine', url: '/canteen', icon: UtensilsCrossed, roles: ['ADMIN', 'DIRECTEUR'] },
+  { title: 'Tenues', url: '/uniforms', icon: Shirt, roles: ['ADMIN', 'DIRECTEUR'] },
   { title: 'Documents', url: '/documents', icon: FileText, roles: ['ADMIN', 'DIRECTEUR', 'COMPTABLE'] },
   { title: 'Finances', url: '/finance', icon: Wallet, roles: ['ADMIN', 'COMPTABLE'] },
   { title: 'Paie', url: '/payroll', icon: Banknote, roles: ['ADMIN', 'COMPTABLE'] },
   { title: 'Administration', url: '/admin', icon: Shield, roles: ['ADMIN'] },
+  { title: 'Configuration', url: '/settings', icon: Settings, roles: ['ADMIN'] },
+  { title: 'Abonnement', url: '/subscription', icon: CreditCard },
 ];
 
 export default function AppSidebar() {
