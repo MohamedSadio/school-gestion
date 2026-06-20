@@ -19,7 +19,8 @@ import {
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuthStore, UserRole } from '@/stores/authStore';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface NavItem {
   title: string;
@@ -49,7 +50,12 @@ export default function AppSidebar() {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const location = useLocation();
+  const isMobile = useIsMobile();
   const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    setCollapsed(isMobile);
+  }, [isMobile]);
 
   const visibleItems = navItems.filter(
     (item) => !item.roles || (user && item.roles.includes(user.role))
