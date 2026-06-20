@@ -19,8 +19,7 @@ import {
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuthStore, UserRole } from '@/stores/authStore';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
-import { useEffect, useState as useStateAlias } from 'react';
+import { useEffect, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface NavItem {

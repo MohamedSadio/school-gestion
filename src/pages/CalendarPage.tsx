@@ -104,7 +104,8 @@ export default function CalendarPage() {
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
           >
             {showForm ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-            {showForm ? 'Annuler' : 'Nouvel événement'}
+            <span className="hidden sm:inline">{showForm ? 'Annuler' : 'Nouvel événement'}</span>
+            <span className="sm:hidden">{showForm ? 'Annuler' : 'Nouveau'}</span>
           </button>
         }
       />
@@ -178,21 +179,22 @@ export default function CalendarPage() {
 
             <div className="grid grid-cols-7 gap-px bg-border border border-border rounded-sm overflow-hidden">
               {WEEKDAYS.map((d) => (
-                <div key={d} className="bg-muted px-2 py-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground text-center">
-                  {d}
+                <div key={d} className="bg-muted px-1 md:px-2 py-2 text-[10px] md:text-xs font-semibold uppercase tracking-wider text-muted-foreground text-center">
+                  <span className="hidden sm:inline">{d}</span>
+                  <span className="sm:hidden">{d.charAt(0)}</span>
                 </div>
               ))}
               {cells.map((day, i) => {
-                if (!day) return <div key={i} className="bg-card/50 h-24" />;
+                if (!day) return <div key={i} className="bg-card/50 h-16 md:h-24" />;
                 const dayEvents = events.filter((e) => e.date === isoFor(day));
                 return (
-                  <div key={i} className="bg-card h-24 p-1.5 flex flex-col gap-1 overflow-hidden">
+                  <div key={i} className="bg-card h-16 md:h-24 p-1 md:p-1.5 flex flex-col gap-1 overflow-hidden">
                     <span className="text-xs text-muted-foreground tabular-nums">{day}</span>
                     {dayEvents.slice(0, 2).map((e) => (
                       <div
                         key={e.id}
                         className={cn(
-                          'text-[10px] px-1 py-0.5 rounded-sm truncate border',
+                          'hidden md:block text-[10px] px-1 py-0.5 rounded-sm truncate border',
                           e.type === 'composition' && 'bg-destructive/10 text-destructive border-destructive/20',
                           e.type === 'fete' && 'bg-accent/10 text-accent border-accent/20',
                           e.type === 'culturel' && 'bg-success/10 text-success border-success/20',
@@ -203,8 +205,11 @@ export default function CalendarPage() {
                         {e.title}
                       </div>
                     ))}
+                    {dayEvents.length > 0 && (
+                      <span className="md:hidden inline-block w-1.5 h-1.5 rounded-full bg-accent" />
+                    )}
                     {dayEvents.length > 2 && (
-                      <span className="text-[10px] text-muted-foreground">+{dayEvents.length - 2}</span>
+                      <span className="hidden md:inline text-[10px] text-muted-foreground">+{dayEvents.length - 2}</span>
                     )}
                   </div>
                 );
