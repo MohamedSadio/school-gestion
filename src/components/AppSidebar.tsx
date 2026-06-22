@@ -89,7 +89,7 @@ export default function AppSidebar() {
           <img
             src="/logo.jpg"
             alt="GestScolaire"
-            className="h-8 w-8 object-contain shrink-0 mx-auto"
+            className="h-6 w-6 object-contain shrink-0"
           />
         )}
         <button
