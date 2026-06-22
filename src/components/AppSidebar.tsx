@@ -71,16 +71,33 @@ export default function AppSidebar() {
       {/* Header */}
       <div className="h-16 flex items-center justify-between px-4 border-b border-sidebar-border">
         {!collapsed && (
-          <div>
-            <h2 className="font-serif text-lg leading-tight text-sidebar-foreground">
-              GestScolaire
-            </h2>
-            <p className="text-xs text-sidebar-muted">Direction & Excellence</p>
+          <div className="flex items-center gap-3 min-w-0">
+            <img
+              src="/logo.jpg"
+              alt="GestScolaire"
+              className="h-8 w-8 object-contain shrink-0"
+            />
+            <div className="min-w-0">
+              <h2 className="font-serif text-lg leading-tight text-sidebar-foreground truncate">
+                GestScolaire
+              </h2>
+              <p className="text-xs text-sidebar-muted">Direction & Excellence</p>
+            </div>
           </div>
+        )}
+        {collapsed && (
+          <img
+            src="/logo.jpg"
+            alt="GestScolaire"
+            className="h-8 w-8 object-contain shrink-0 mx-auto"
+          />
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 rounded-sm hover:bg-sidebar-accent transition-colors"
+          className={cn(
+            'p-1.5 rounded-sm hover:bg-sidebar-accent transition-colors shrink-0',
+            collapsed && 'mx-auto'
+          )}
         >
           <ChevronLeft
             className={cn('h-4 w-4 transition-transform', collapsed && 'rotate-180')}
